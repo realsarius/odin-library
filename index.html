@@ -12,8 +12,8 @@
     <div class="container">
       <div class="control-center">
         <button id="new-book">New Book</button>
-        <dialog id="addBookModal">
-          <form action="#">
+        <dialog id="addBookModal" class="hiddden">
+          <form action="#" id="form">
             <div class="input-box">
               <label for="title">Title</label>
               <input type="text" name="title" id="title" />
@@ -26,9 +26,16 @@
               <label for="page">Number of Pages</label>
               <input type="text" name="page" id="page" />
             </div>
-            <div class="input-box">
+            <div class="input-box readCheckbox">
               <label for="read">Read</label>
-              <input type="checkbox" name="read" id="read" />
+              <select id="read" name="read">
+                <option value="">Please choose</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="btnSubmit">
+              <button type="submit" id="submitBtn">Add</button>
             </div>
           </form>
         </dialog>
@@ -36,9 +43,7 @@
       <div class="display">
         <table id="table">
           <thead>
-            <tr>
-              <!-- Add table headers -->
-            </tr>
+            <tr></tr>
           </thead>
           <tbody id="tbody">
             <!-- Table rows will be added dynamically -->
