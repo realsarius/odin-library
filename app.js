@@ -23,12 +23,19 @@ const book2 = new Book(
   '295 pages',
   'not read yet'
 );
+const book3 = new Book(
+  'Harry Potter',
+  'J.R.R. Tolkien',
+  '295 pages',
+  'not read yet'
+);
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 addBookToLibrary(book1);
 addBookToLibrary(book2);
+addBookToLibrary(book3);
 
 const tbody = document.getElementById('tbody');
 
@@ -46,3 +53,9 @@ function displayBooks() {
 }
 
 displayBooks();
+
+const newBook = document.querySelector('#new-book');
+const addBookModal = document.querySelector('#addBookModal');
+newBook.addEventListener('click', (e) => {
+  addBookModal.showModal();
+});

@@ -9,15 +9,42 @@
     <title>Library</title>
   </head>
   <body>
-    <table id="table">
-      <thead>
-        <tr>
-          <!-- Add table headers -->
-        </tr>
-      </thead>
-      <tbody id="tbody">
-        <!-- Table rows will be added dynamically -->
-      </tbody>
-    </table>
+    <div class="container">
+      <div class="control-center">
+        <button id="new-book">New Book</button>
+        <dialog id="addBookModal">
+          <form action="#">
+            <div class="input-box">
+              <label for="title">Title</label>
+              <input type="text" name="title" id="title" />
+            </div>
+            <div class="input-box">
+              <label for="author">Author</label>
+              <input type="text" name="author" id="author" />
+            </div>
+            <div class="input-box">
+              <label for="page">Number of Pages</label>
+              <input type="text" name="page" id="page" />
+            </div>
+            <div class="input-box">
+              <label for="read">Read</label>
+              <input type="checkbox" name="read" id="read" />
+            </div>
+          </form>
+        </dialog>
+      </div>
+      <div class="display">
+        <table id="table">
+          <thead>
+            <tr>
+              <!-- Add table headers -->
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>
