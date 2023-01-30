@@ -27,6 +27,7 @@ function addBookToLibrary(book) {
       const td = document.createElement('td');
       if (key === 'title') {
         tr.dataset.title = book[key];
+        deleteBtn.dataset.row = myLibrary.length;
       }
       td.textContent = book[key];
       tr.appendChild(td);
@@ -37,25 +38,20 @@ function addBookToLibrary(book) {
   }
 }
 
-const table = document.querySelector('#table');
-
-function displayBooks() {
-  //   myLibrary.forEach((item, index) => {
-  //     const tr = document.createElement('tr');
-  //     Object.keys(item).forEach((k, i) => {
-  //       const td = document.createElement('td');
-  //       td.textContent = item[k];
-  //       tr.appendChild(td);
-  //     });
-  //     tbody.appendChild(tr);
-  //   });
-}
-
 const newBook = document.querySelector('#new-book');
 const addBookModal = document.querySelector('#addBookModal');
 newBook.addEventListener('click', (e) => {
   addBookModal.showModal();
 });
+
+const table = document.querySelector('#table');
+const buttons = () => {
+  document.querySelectorAll('#deleteBtn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      table.deleteRow(btn.getAttribute('data-row'));
+    });
+  });
+};
 
 const submitBtn = document.querySelector('#submitBtn');
 submitBtn.addEventListener('click', (e) => {
@@ -66,7 +62,7 @@ submitBtn.addEventListener('click', (e) => {
   const book = new Book(title, author, page, read);
 
   addBookToLibrary(book);
+  buttons();
 
-  displayBooks();
   e.preventDefault();
 });
