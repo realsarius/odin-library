@@ -14,15 +14,20 @@ Book.prototype.printInfo = function () {
 function addBookToLibrary(book) {
   myLibrary.push(book);
   const tr = document.createElement('tr');
+  const tbody = document.getElementById('tbody');
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = 'Delete';
   deleteBtn.id = 'deleteBtn';
   const readBtn = document.createElement('button');
   readBtn.textContent = 'Read';
   readBtn.id = 'readBtn';
+  // eslint-disable-next-line no-restricted-syntax, guard-for-in
   for (let key in book) {
     if (book.hasOwnProperty(key)) {
       const td = document.createElement('td');
+      if (key === 'title') {
+        tr.dataset.title = book[key];
+      }
       td.textContent = book[key];
       tr.appendChild(td);
     }
@@ -33,7 +38,6 @@ function addBookToLibrary(book) {
 }
 
 const table = document.querySelector('#table');
-const tbody = document.getElementById('tbody');
 
 function displayBooks() {
   //   myLibrary.forEach((item, index) => {
@@ -60,7 +64,7 @@ submitBtn.addEventListener('click', (e) => {
   const page = document.querySelector('#page').value;
   const read = document.querySelector('#read').value;
   const book = new Book(title, author, page, read);
-  console.log(book);
+
   addBookToLibrary(book);
 
   displayBooks();
