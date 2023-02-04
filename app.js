@@ -45,6 +45,16 @@ newBook.addEventListener('click', (e) => {
 });
 
 const table = document.querySelector('#table');
+// function handleClick(e) {
+//   console.log('asddsa');
+//   table.deleteRow(e.target.getAttribute('data-row'));
+// }
+// const buttons = () => {
+//   const deleteButtons = document.querySelectorAll('#deleteBtn');
+//   deleteButtons.forEach((btn) => {
+//     btn.addEventListener('click', handleClick, { once: true });
+//   });
+// };
 const buttons = () => {
   document.querySelectorAll('#deleteBtn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
