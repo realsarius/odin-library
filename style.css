@@ -168,11 +168,11 @@ table {
 }
 
 #table tbody tr {
-  background-color: #d8a7b1;
+  background-color: #7d8696;
 }
 
 #table tbody tr:nth-of-type(even) {
-  background-color: #ad878f;
+  background-color: #5e6a7c;
 }
 
 #table tbody tr:last-of-type {
