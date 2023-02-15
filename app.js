@@ -62,6 +62,11 @@ newBook.addEventListener('click', (e) => {
 
 function handleClick(e) {
   e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+  myLibrary.find((o, i) => {
+    myLibrary.splice(
+      myLibrary.indexOf(e.target.getAttribute('data-book-id'), 1)
+    );
+  });
 }
 
 const buttons = () => {
@@ -82,6 +87,70 @@ submitBtn.addEventListener('click', (e) => {
 
   addBookToLibrary(book);
   buttons();
-
+  addBookModal.close();
   e.preventDefault();
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
+  document.querySelector('#page').value = '';
+  addBookModal.close();
+});
+
+document.querySelector('#title').addEventListener('input', () => {
+  if (document.querySelector('#title').validity.valid) {
+    document.querySelector('.title-error').textContent = '';
+    document.querySelector('#title').style.outline =
+      '1.5px rgb(156, 156, 255) solid';
+    document.querySelector('#title').style.background =
+      'rgba(156, 156, 255, 0.2)';
+  } else {
+    document.querySelector(
+      '.title-error'
+    ).textContent = `At least 5 characters. Please add ${
+      5 - document.querySelector('#title').value.length
+    } more.`;
+    document.querySelector('#title').style.outline =
+      '1.5px rgb(255, 156, 156) solid';
+    document.querySelector('#title').style.background =
+      'rgba(255, 156, 156, 0.2)';
+  }
+});
+
+document.querySelector('#author').addEventListener('input', () => {
+  if (document.querySelector('#author').validity.valid) {
+    document.querySelector('.author-error').textContent = '';
+    document.querySelector('#author').style.outline =
+      '1.5px rgb(156, 156, 255) solid';
+    document.querySelector('#author').style.background =
+      'rgba(156, 156, 255, 0.2)';
+  } else {
+    document.querySelector(
+      '.author-error'
+    ).textContent = `At least 5 characters. Please add ${
+      5 - document.querySelector('#author').value.length
+    } more.`;
+    document.querySelector('#author').style.outline =
+      '1.5px rgb(255, 156, 156) solid';
+    document.querySelector('#author').style.background =
+      'rgba(255, 156, 156, 0.2)';
+  }
+});
+
+document.querySelector('#page').addEventListener('input', () => {
+  if (document.querySelector('#page').validity.valid) {
+    document.querySelector('.page-error').textContent = '';
+    document.querySelector('#page').style.outline =
+      '1.5px rgb(156, 156, 255) solid';
+    document.querySelector('#page').style.background =
+      'rgba(156, 156, 255, 0.2)';
+  } else {
+    document.querySelector('.page-error').textContent =
+      'Please use only numbers';
+    document.querySelector('#page').style.outline =
+      '1.5px rgb(255, 156, 156) solid';
+    document.querySelector('#page').style.background =
+      'rgba(255, 156, 156, 0.2)';
+  }
 });

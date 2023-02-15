@@ -13,18 +13,48 @@
       <div class="control-center">
         <button id="new-book">New Book</button>
         <dialog id="addBookModal" class="hiddden">
-          <form action="#" id="form">
+          <div class="nav">
+            <h1>Add a Book</h1>
+            <span class="close"><img src="img/close.svg" alt="" /></span>
+          </div>
+          <form action="#" id="form" novalidate>
             <div class="input-box">
               <label for="title">Title</label>
-              <input type="text" name="title" id="title" />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                minlength="5"
+                max="32"
+                required
+              />
+              <div class="title-error"></div>
             </div>
             <div class="input-box">
               <label for="author">Author</label>
-              <input type="text" name="author" id="author" />
+              <input
+                type="text"
+                name="author"
+                id="author"
+                minlength="5"
+                max="32"
+                required
+                required
+              />
+              <div class="author-error"></div>
             </div>
             <div class="input-box">
               <label for="page">Number of Pages</label>
-              <input type="text" name="page" id="page" />
+              <input
+                type="number"
+                name="page"
+                id="page"
+                min="10"
+                max="9999"
+                pattern="^[0-9]*$"
+                required
+              />
+              <div class="page-error"></div>
             </div>
             <div class="input-box readCheckbox">
               <label for="read">Read</label>
