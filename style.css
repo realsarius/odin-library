@@ -146,6 +146,7 @@ table {
 
 #table {
   border-collapse: collapse;
+  width: 50vw;
   margin: 25px 0;
   font-size: 0.9em;
   min-width: 500px;
@@ -155,8 +156,12 @@ table {
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
+#table thead {
+  width: 30vw;
+}
+
 #table thead tr {
-  background-color: #980000;
+  background-color: #4b4b4b;
   color: #ffffff;
   text-align: left;
   font-weight: bold;
@@ -308,4 +313,26 @@ table {
   box-sizing: border-box;
   padding: 0.5em;
   width: 15rem;
+}
+
+#readBtn {
+  margin-right: 10px;
+}
+
+#deleteBtn,
+#readBtn {
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+  font-size: 1rem;
+  background: #e2e8f0;
+  border-radius: 10px;
+  border: none;
+  outline: 1px black solid;
+  cursor: pointer;
+  transition: background 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#deleteBtn:hover,
+#readBtn:hover {
+  background: #f7fafb;
 }
