@@ -35,7 +35,7 @@ const render = () => {
       if (book.hasOwnProperty(key)) {
         const td = document.createElement('td');
         if (key === 'uuid') {
-          tr.dataset.uuid = book[book.uuid];
+          tr.dataset.uuid = book.uuid;
           deleteBtn.dataset.bookId = book.uuid;
         } else {
           td.textContent = book[key];
@@ -78,16 +78,25 @@ const buttons = () => {
 
 const submitBtn = document.querySelector('#submitBtn');
 submitBtn.addEventListener('click', (e) => {
-  const UUID = Math.random().toString(16).slice(2);
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-  const page = document.querySelector('#page').value;
-  const read = document.querySelector('#read').value;
-  const book = new Book(title, author, page, read, UUID);
+  if (
+    document.querySelector('#title').validity.valid &&
+    document.querySelector('#author').validity.valid &&
+    document.querySelector('#page').validity.valid
+  ) {
+    const UUID = Math.random().toString(16).slice(2);
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const page = document.querySelector('#page').value;
+    const read = document.querySelector('#read').value;
+    const book = new Book(title, author, page, read, UUID);
 
-  addBookToLibrary(book);
-  buttons();
-  addBookModal.close();
+    addBookToLibrary(book);
+    buttons();
+    addBookModal.close();
+  } else {
+    document.querySelector('#form').reportValidity();
+  }
+
   e.preventDefault();
 });
 
